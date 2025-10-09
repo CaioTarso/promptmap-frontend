@@ -1,8 +1,11 @@
 <template>
   <header class="bg-stone-900 p-6 top-0 w-full fixed z-10">
     <div class="flex justify-between items-center max-w-7xl mx-auto">
-      <div class="font-bold text-2xl text-neutral-400">
-        PromptMAP
+      <div class="flex items-center gap-2 text-neutral-400"> 
+        <Terminal />
+        <div class="font-bold text-2xl ">
+          PromptMAP
+        </div>
       </div>
 
       <nav class="flex items-center gap-8 ">
@@ -149,5 +152,5 @@
 
 <script setup>
   import heroimage from '../assets/heroimage.png';
-  import { User, Heart, Send, Linkedin, Github } from 'lucide-vue-next';
+  import { User, Heart, Send, Linkedin, Github, Terminal } from 'lucide-vue-next';
 </script>
