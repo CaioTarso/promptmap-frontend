@@ -31,12 +31,12 @@
               Explore ideias e <br/>compartilhe as suas!
             </h2>
             <div>
-              <button>
+              <button class="hover:scale-105 transition-transform duration-300">
                 <a href="/register" class="bg-neutral-400 text-white px-6 py-3 rounded-lg">
                   Comece agora
                 </a>
               </button>
-              <button>
+              <button class="hover:scale-105 transition-transform duration-300">
                 <a href="#Sobre" class="ml-4 bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100">
                   Saiba mais
                 </a>
