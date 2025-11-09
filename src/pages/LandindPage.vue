@@ -1,9 +1,15 @@
 <template>
   <header class="bg-stone-900 p-6 top-0 w-full fixed z-10">
     <div class="flex justify-between items-center max-w-7xl mx-auto">
-      <div class="flex items-center gap-2 text-neutral-400"> 
-        <Terminal />
-        <div class="font-bold text-2xl ">
+      <div class="flex items-center gap-2 text-white font-medium"> 
+        <figure>
+          <img 
+            :src="logobranca" 
+            alt="Logo PromptMAP" 
+            class="w-10 h-12"
+          />
+        </figure>
+        <div class="font-bold text-1xl ">
           PromptMAP
         </div>
       </div>
@@ -16,8 +22,8 @@
       </nav>
 
       <div class="flex items-center gap-4">
-        <button class="bg-neutral-400 text-white px-6 py-2 rounded-lg hover:bg-neutral-500">Login</button>
-        <button class="bg-white text-neutral-400 px-6 py-2 rounded-lg hover:bg-gray-100">
+        <button  @click="showLogin = true" class="bg-neutral-400 text-white px-6 py-2 rounded-lg hover:bg-neutral-500">Login</button>
+        <button  @click="showRegister= true"  class="bg-white text-neutral-400 px-6 py-2 rounded-lg hover:bg-gray-100">
           Register
         </button>
       </div>
@@ -31,10 +37,11 @@
               Explore ideias e <br/>compartilhe as suas!
             </h2>
             <div>
-              <button class="hover:scale-105 transition-transform duration-300">
-                <a href="/register" class="bg-neutral-400 text-white px-6 py-3 rounded-lg">
-                  Comece agora
-                </a>
+              <button 
+                @click="showLogin = true" 
+                class="bg-neutral-400 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300"
+              >
+                Comece agora
               </button>
               <button class="hover:scale-105 transition-transform duration-300">
                 <a href="#Sobre" class="ml-4 bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100">
@@ -147,10 +154,38 @@
   </div>
 </footer>
 
+<LoginModal
+    v-if="showLogin"
+    @close="showLogin = false"
+    @open-register="openRegister"
+  />
 
+  <RegisterModal
+    v-if="showRegister"
+    @close="showRegister = false"
+    @open-login="openLogin"
+  />
 </template>
 
 <script setup>
-  import heroimage from '../assets/heroimage.png';
-  import { User, Heart, Send, Linkedin, Github, Terminal } from 'lucide-vue-next';
+import { ref } from "vue";
+import heroimage from "../assets/heroimage.png";
+import logobranca from "../assets/logobranca.png";
+import { User, Heart, Send, Linkedin, Github, Terminal } from "lucide-vue-next";
+import LoginModal from "../components/modals/auth/LoginModal.vue";
+import RegisterModal from "../components/modals/auth/RegisterModal.vue";
+
+const showLogin = ref(false);
+const showRegister = ref(false);
+
+const openLogin = () => {
+    showRegister.value = false;
+    showLogin.value = true;
+};
+
+const openRegister = () => {
+    showLogin.value = false;
+    showRegister.value = true;
+};
+
 </script>
