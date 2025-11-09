@@ -1,8 +1,14 @@
 <template>
   <header class="bg-stone-900 p-6 top-0 w-full fixed z-10">
     <div class="flex justify-between items-center max-w-7xl mx-auto">
-      <div class="flex items-center gap-2 text-neutral-400"> 
-        <Terminal />
+      <div class="flex items-center gap-2 text-white font-medium"> 
+        <figure>
+          <img 
+            :src="logobranca" 
+            alt="Logo PromptMAP" 
+            class="w-10 h-12"
+          />
+        </figure>
         <div class="font-bold text-1xl ">
           PromptMAP
         </div>
@@ -164,6 +170,7 @@
 <script setup>
 import { ref } from "vue";
 import heroimage from "../assets/heroimage.png";
+import logobranca from "../assets/logobranca.png";
 import { User, Heart, Send, Linkedin, Github, Terminal } from "lucide-vue-next";
 import LoginModal from "../components/modals/auth/LoginModal.vue";
 import RegisterModal from "../components/modals/auth/RegisterModal.vue";
