@@ -31,10 +31,11 @@
               Explore ideias e <br/>compartilhe as suas!
             </h2>
             <div>
-              <button class="hover:scale-105 transition-transform duration-300">
-                <a href="/register" class="bg-neutral-400 text-white px-6 py-3 rounded-lg">
-                  Comece agora
-                </a>
+              <button 
+                @click="showLogin = true" 
+                class="bg-neutral-400 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300"
+              >
+                Comece agora
               </button>
               <button class="hover:scale-105 transition-transform duration-300">
                 <a href="#Sobre" class="ml-4 bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100">
@@ -148,20 +149,16 @@
 </footer>
 
 <LoginModal
-  v-if="showLogin"
-  @close="showLogin = false"
-  @open-register="openRegister"
-/>
+    v-if="showLogin"
+    @close="showLogin = false"
+    @open-register="openRegister"
+  />
 
-<RegisterModal
-  v-if="showRegister"
-  @close="showRegister = false"
-  @open-login="openLogin"
-/>
-
-
-
-
+  <RegisterModal
+    v-if="showRegister"
+    @close="showRegister = false"
+    @open-login="openLogin"
+  />
 </template>
 
 <script setup>
@@ -171,9 +168,17 @@ import { User, Heart, Send, Linkedin, Github, Terminal } from "lucide-vue-next";
 import LoginModal from "../components/modals/auth/LoginModal.vue";
 import RegisterModal from "../components/modals/auth/RegisterModal.vue";
 
-// controle dos modais
 const showLogin = ref(false);
 const showRegister = ref(false);
 
+const openLogin = () => {
+    showRegister.value = false;
+    showLogin.value = true;
+};
+
+const openRegister = () => {
+    showLogin.value = false;
+    showRegister.value = true;
+};
 
 </script>
