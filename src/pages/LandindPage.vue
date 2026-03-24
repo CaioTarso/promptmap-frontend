@@ -1,3 +1,31 @@
+<script setup>
+import { ref } from "vue";
+import { useRouter } from 'vue-router';
+import heroimage from "../assets/heroimage.png";
+import logobranca from "../assets/logobranca.png";
+import { User, Heart, Send, Linkedin, Github, Terminal } from "lucide-vue-next";
+import LoginModal from "../components/modals/auth/LoginModal.vue";
+import RegisterModal from "../components/modals/auth/RegisterModal.vue";
+
+const router = useRouter();
+const showLogin = ref(false);
+const showRegister = ref(false);
+
+const openLogin = () => {
+    showRegister.value = false;
+    showLogin.value = true;
+};
+
+const openRegister = () => {
+    showLogin.value = false;
+    showRegister.value = true;
+};
+
+</script>
+
+
+
+
 <template>
   <header class="bg-stone-900 p-6 top-0 w-full fixed z-10">
     <div class="flex justify-between items-center max-w-7xl mx-auto">
@@ -122,6 +150,8 @@
   </div>
 </section>
 
+
+
   <footer id="Contato" class="bg-stone-950 text-neutral-400 font-light py-12 px-8">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
     
@@ -167,25 +197,3 @@
   />
 </template>
 
-<script setup>
-import { ref } from "vue";
-import heroimage from "../assets/heroimage.png";
-import logobranca from "../assets/logobranca.png";
-import { User, Heart, Send, Linkedin, Github, Terminal } from "lucide-vue-next";
-import LoginModal from "../components/modals/auth/LoginModal.vue";
-import RegisterModal from "../components/modals/auth/RegisterModal.vue";
-
-const showLogin = ref(false);
-const showRegister = ref(false);
-
-const openLogin = () => {
-    showRegister.value = false;
-    showLogin.value = true;
-};
-
-const openRegister = () => {
-    showLogin.value = false;
-    showRegister.value = true;
-};
-
-</script>

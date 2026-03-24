@@ -1,9 +1,8 @@
 <script setup>
-import LandindPage from './pages/LandindPage.vue';
 </script>
 
 <template>
-  <LandindPage />
+  <router-view :key="$route.fullPath" />
 </template>
 
 
