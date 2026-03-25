@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { Bookmark, ChevronLeft, ChevronRight } from 'lucide-vue-next';
 import PromptCopyBox from '../../components/posts/PromptCopyBox.vue';
 import PostsRecommend from '../../components/posts/PostsRecommend.vue';
+import HeaderGlobal from '../../components/layout/HeaderGlobal.vue';
 
 // Dados mockados
 const post = ref({
@@ -16,9 +17,10 @@ const post = ref({
 </script>
 
 <template>
-  <div class="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto">
-      
+  <div class="min-h-screen bg-white">
+    <HeaderGlobal />
+    
+    <div class="max-w-6xl mx-auto py-12 px-6">
       <div class="flex items-start justify-between mb-8">
         <div class="flex flex-col gap-3">
 
