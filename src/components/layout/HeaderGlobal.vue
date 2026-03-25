@@ -22,10 +22,10 @@ const navItems = [
     <div class="max-w-6xl mx-auto flex items-center justify-between gap-10 px-6 py-4">
       
       <div class="flex items-center gap-8 flex-1">
-        <div class="flex items-center gap-2 shrink-0">
-          <img :src="logo" class="w-8 h-8" />
-          <span class="font-light text-xl tracking-tight text-black">PromptMAP</span>
-        </div>
+        <router-link to="/home" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <img :src="logo" class="w-8 h-8" />
+        <span class="font-light text-xl tracking-tight text-black">PromptMAP</span>
+      </router-link>
 
         <div class="flex-1 max-w-2xl flex items-center bg-[#f3f4f6] px-4 py-2.5 rounded-xl">
           <Search class="w-4 h-4 text-gray-400 mr-2" />
