@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LandindPage from '../pages/LandindPage.vue';
+import Home from '../pages/app/Home.vue';
 import PostViewer from '../pages/app/PostViewer.vue';
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: 'Landing',
         component: LandindPage
+    },
+    {
+        path: '/home',
+        name: 'Home',
+        component: Home
     },
     {
         path: '/post/:id',
