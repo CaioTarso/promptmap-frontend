@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Arquivos de documentação
+README.md
+src/assets/telas/
+
 # Editor directories and files
 .vscode/
 !.vscode/extensions.json
