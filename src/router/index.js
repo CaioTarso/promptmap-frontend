@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LandindPage from '../pages/LandindPage.vue';
 import Home from '../pages/app/Home.vue';
-import PostViewer from '../pages/app/PostViewer.vue';
+import PostViewer from '../pages/app/Posts.vue';
 
 const routes = [
     {
