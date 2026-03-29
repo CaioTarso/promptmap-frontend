@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LandindPage from '../pages/LandindPage.vue';
 import Home from '../pages/app/Home.vue';
 import PostViewer from '../pages/app/Posts.vue';
+import CreatePost from '../pages/app/CreatePost.vue';
 
 const routes = [
     {
@@ -18,6 +19,17 @@ const routes = [
         path: '/post/:id',
         name: 'PostViewer',
         component: PostViewer,
+        props: true
+    },
+    {
+        path: '/create',
+        name: 'CreatePost',
+        component: CreatePost
+    },
+    {
+        path: '/post/:id/edit',
+        name: 'EditPost',
+        component: CreatePost,
         props: true
     }
 ];

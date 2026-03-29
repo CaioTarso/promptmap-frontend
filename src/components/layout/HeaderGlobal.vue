@@ -39,9 +39,9 @@ const navItems = [
       </div>
 
       <div class="flex items-center gap-6">
-        <button class="bg-black text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-gray-800 transition-colors">
+        <router-link to="/create" class="bg-black text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-gray-800 transition-colors">
           publicar
-        </button>
+        </router-link>
 
         <div class="h-6 w-[1px] bg-gray-200"></div>
 
