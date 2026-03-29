@@ -67,7 +67,7 @@
 
           <button
             type="submit"
-            class="w-full bg-black text-xs text-white py-3 rounded-md hover:bg-gray-800 transition-colors font-medium"
+            class="w-full bg-black text-1xl text-white py-3 rounded-md hover:bg-gray-800 transition-colors font-medium"
           >
             Entrar
             

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { Heart } from 'lucide-vue-next';
+import { Heart, MessageCircle } from 'lucide-vue-next';
 
 const props = defineProps({
   comment: {
@@ -48,16 +48,16 @@ const submitReply = () => {
 
       <div class="flex flex-col gap-1.5 flex-1">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-medium text-black">{{ comment.authorName }}</span>
+          <span class="text-sm font-medium text-black">{{ comment.authorName }}</span>
           <span class="text-xs text-gray-400">{{ comment.date }}</span>
         </div>
 
-        <p class="text-xs text-black leading-relaxed">{{ comment.content }}</p>
+        <p class="text-sm text-black leading-relaxed">{{ comment.content }}</p>
 
         <div class="flex items-center gap-4 mt-1">
           <button 
             @click="emit('like', comment.id)"
-            class="flex items-center gap-1.5 text-xs transition-colors"
+            class="flex items-center gap-1.5 text-sm transition-colors"
             :class="comment.isLiked ? 'text-red-500' : 'text-gray-400 hover:text-red-400'"
           >
             <Heart class="w-3.5 h-3.5" :fill="comment.isLiked ? 'currentColor' : 'none'" />
@@ -67,8 +67,9 @@ const submitReply = () => {
           <button 
             v-if="depth < 2"
             @click="toggleReplyInput"
-            class="text-xs text-gray-400 hover:text-black transition-colors font-medium"
+            class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-black transition-colors font-medium"
           >
+            <MessageCircle class="w-3.5 h-3.5" />
             Responder
           </button>
         </div>
@@ -78,12 +79,12 @@ const submitReply = () => {
             v-model="replyText"
             type="text"
             :placeholder="`responder ${comment.authorName}...`"
-            class="flex-1 border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-black outline-none focus:border-gray-400 transition-colors placeholder:text-black"
+            class="flex-1 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray outline-none focus:border-gray-400 transition-colors placeholder:text-black"
             @keydown.enter="submitReply"
           />
           <button
             @click="submitReply"
-            class="bg-black text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-800 transition-colors shrink-0"
+            class="bg-black text-white px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors shrink-0"
           >
             enviar
           </button>

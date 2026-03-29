@@ -27,7 +27,7 @@
 
         <form @submit.prevent="handleLogin" class="space-y-6">
           <div>
-            <label class="text-xs font-thin block">Email</label>
+            <label class="text-xs font-medium block">Email</label>
             <input
               v-model="email"
               type="email"
@@ -53,13 +53,11 @@
           <a href="#" class="text-xs text-right block text-gray-700 hover:text-gray-900 hover:underline pt-1">
             Esqueceu sua senha?
           </a>
+          
 
-          <button
-            type="submit"
-            class="w-full bg-black text-xs text-white py-3 rounded-md hover:bg-gray-800 transition-colors font-medium"
-          >
+          <router-link to="/home" class="flex w-full bg-black text-1xl text-white px-10 py-3 rounded-md hover:bg-gray-800 transition-colors font-medium justify-center">
             Entrar
-          </button>
+          </router-link>
 
     
 

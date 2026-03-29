@@ -39,7 +39,7 @@ const copyToClipboard = async () => {
 
    
     <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar mt-2">
-      <p class="text-black leading-relaxed text-xs font-medium">
+      <p class="text-black leading-relaxed text-sm font-medium">
         {{ promptContent }}
       </p>
     </div>

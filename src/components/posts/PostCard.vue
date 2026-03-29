@@ -47,7 +47,7 @@ const emit = defineEmits(['click', 'toggleBookmark']);
 
     <div class="flex flex-col flex-1">
       <div class="mb-3">
-        <h3 class="font-bold text-gray-900 text-xs leading-snug line-clamp-2">
+        <h3 class="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
           {{ title }}
         </h3>
       </div>
@@ -61,12 +61,12 @@ const emit = defineEmits(['click', 'toggleBookmark']);
               alt="Avatar" 
               class="h-full w-full object-cover"
             />
-            <span v-else class="text-[9px] font-medium text-gray-600">
+            <span v-else class="text-[9px] font-semibold text-gray-600">
               {{ authorName ? authorName.charAt(0).toUpperCase() : 'U' }}
             </span>
           </div>
           
-          <span class="text-[10px] text-gray-600 font-semibold truncate leading-none">
+          <span class="text-[11px] text-gray-500 font-semibold truncate leading-none">
             {{ authorName }} - {{ date }}
           </span>
         </div>

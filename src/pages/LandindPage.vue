@@ -29,7 +29,7 @@ const openRegister = () => {
 <template>
   <header class="bg-stone-900 p-6 top-0 w-full fixed z-10">
     <div class="flex justify-between items-center max-w-7xl mx-auto">
-      <div class="flex items-center gap-2 text-white font-medium"> 
+      <div class="flex items-center gap-2 text-white font-bold text-1xl"> 
         <figure>
           <img 
             :src="logobranca" 
@@ -43,15 +43,15 @@ const openRegister = () => {
       </div>
 
       <nav class="flex items-center gap-8 ">
-        <a href="#Home" class="text-neutral-400 hover:text-neutral-500">Home</a>
-        <a href="#Sobre" class="text-neutral-400 hover:text-neutral-500">Sobre</a>
-        <a href="#HowWorks" class="text-neutral-400  hover:text-neutral-500">Como Funciona</a>
-        <a href="#Contato" class="text-neutral-400 hover:text-neutral-500">Contato</a>
+        <a href="#Home" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Home</a>
+        <a href="#Sobre" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Sobre</a>
+        <a href="#HowWorks" class="text-neutral-400  hover:text-neutral-500 font-medium text-1xl">Como Funciona</a>
+        <a href="#Contato" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Contato</a>
       </nav>
 
       <div class="flex items-center gap-4">
-        <button  @click="showLogin = true" class="bg-neutral-400 text-white px-6 py-2 rounded-lg hover:bg-neutral-500">Login</button>
-        <button  @click="showRegister= true"  class="bg-white text-neutral-400 px-6 py-2 rounded-lg hover:bg-gray-100">
+        <button  @click="showLogin = true" class="bg-neutral-400 text-white px-6 py-2 rounded-lg hover:bg-neutral-500 font-medium text-1xl">Login</button>
+        <button  @click="showRegister= true"  class="bg-white text-neutral-400 px-6 py-2 rounded-lg hover:bg-gray-100 font-medium text-1xl">
           Register
         </button>
       </div>
@@ -61,18 +61,18 @@ const openRegister = () => {
     <section id="Home" class="bg-gradient-to-b from-neutral-900 to-neutral-400 min-h-screen flex justify-center items-start pt-49">
       <div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center gap-12">
           <div class="md:w-1/2">
-            <h2 class="text-3xl md:text-5xl font-light text-white mb-6 pb-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-1xl text-white mb-6 pb-6">
               Explore ideias e <br/>compartilhe as suas!
             </h2>
             <div>
               <button 
                 @click="showLogin = true" 
-                class="bg-neutral-400 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300"
+                class="bg-neutral-400 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300 font-medium text-1xl"
               >
                 Comece agora
               </button>
               <button class="hover:scale-105 transition-transform duration-300">
-                <a href="#Sobre" class="ml-4 bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100">
+                <a href="#Sobre" class="ml-4 bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100 font-medium text-1xl">
                   Saiba mais
                 </a>
               </button>

@@ -89,7 +89,7 @@ const addReply = (parentId, text) => {
 
 <template>
   <div class="flex flex-col">
-    <h2 class="text-sm text-stone-900 font-semibold">Comentários</h2>
+    <h2 class="text-base text-stone-900 font-semibold">Comentários</h2>
 
     <div class="flex flex-col gap-3 mb-6 pt-7">
       <input
@@ -102,7 +102,7 @@ const addReply = (parentId, text) => {
       <div>
         <button
           @click="addComment"
-          class="bg-black text-white px-5 py-2 rounded-lg text-xs font-semibold hover:bg-gray-800 transition-colors mt-2"
+          class="bg-black text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors mt-2"
         >
           publicar
         </button>

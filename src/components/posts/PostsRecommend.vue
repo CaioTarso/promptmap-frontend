@@ -46,7 +46,7 @@ const toggleBookmark = (post) => {
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex mb-2">
-        <h3 class="text-sm text-stone-900 font-semibold">
+        <h3 class="text-base text-stone-900 font-semibold">
             Recomendados
         </h3>
     </div>

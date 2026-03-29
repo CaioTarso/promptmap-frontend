@@ -9,7 +9,7 @@ const route = useRoute();
 
 const isEditMode = computed(() => !!route.params.id);
 const pageTitle = computed(() => isEditMode.value ? 'Editar publicação' : 'Publique seu prompt');
-const submitLabel = computed(() => isEditMode.value ? 'salvar' : 'publicar');
+const submitLabel = computed(() => isEditMode.value ? 'Salvar' : 'Publicar');
 
 const title = ref('');
 const category = ref('');
@@ -115,7 +115,7 @@ const handlePublish = () => {
       <form @submit.prevent="handlePublish" class="flex flex-col gap-8">
 
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-semibold text-black">Título</label>
+          <label class="text-base font-semibold text-black">Título</label>
           <input
             v-model="title"
             type="text"
@@ -125,7 +125,7 @@ const handlePublish = () => {
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-semibold text-black">Descrição</label>
+          <label class="text-base font-semibold text-black">Descrição</label>
           <input
             v-model="description"
             type="text"
@@ -135,7 +135,7 @@ const handlePublish = () => {
         </div>
 
         <div class="flex flex-col gap-2 relative">
-          <label class="text-sm font-semibold text-black">Categoria</label>
+          <label class="text-base font-semibold text-black">Categoria</label>
           <button
             type="button"
             @click="categoryOpen = !categoryOpen"
@@ -156,7 +156,7 @@ const handlePublish = () => {
               type="button"
               @click="selectCategory(cat)"
               class="w-full px-4 py-2.5 text-sm text-left hover:bg-[#f3f4f6] transition-colors"
-              :class="category === cat ? 'text-black font-semibold bg-[#f3f4f6]' : 'text-gray-600'"
+              :class="category === cat ? 'text-black font-medium bg-[#f3f4f6]' : 'text-gray-600'"
             >
               {{ cat }}
             </button>
@@ -164,7 +164,7 @@ const handlePublish = () => {
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-semibold text-black">Prompt</label>
+          <label class="text-base font-semibold text-black">Prompt</label>
           <textarea
             v-model="promptText"
             rows="4"
@@ -174,7 +174,7 @@ const handlePublish = () => {
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-semibold text-black">Imagem</label>
+          <label class="text-base font-semibold text-black">Imagem</label>
           
           <div 
             @dragover="handleDragOver"

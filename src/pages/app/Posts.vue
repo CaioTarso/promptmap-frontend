@@ -29,7 +29,7 @@ const post = ref({
           
           <div class="flex items-center gap-2">
             <div class="w-6 h-6 rounded-full bg-gray-200"></div>
-            <span class="text-xs text-gray-500">
+            <span class="text-sm text-gray-500">
               {{ post.author }} - {{ post.date }}
             </span>
           </div>
@@ -54,7 +54,7 @@ const post = ref({
         </div>
 
         <div class="flex flex-col h-full">
-          <h2 class="text-base font-medium text-black mb-3">Prompt :</h2>
+          <h2 class="text-base font-semibold text-black mb-3">Prompt :</h2>
           
           <div class="flex-1 min-h-0 relative">
             <PromptCopyBox :promptContent="post.promptText" class="absolute inset-0" />
@@ -63,8 +63,8 @@ const post = ref({
       </div>
 
       <div class="mt-8 mb-16">
-        <p class="text-black text-sm leading-relaxed">
-          <span class="font-medium">Descrição:</span> <span class="font-normal">{{ post.description }}</span>
+        <p class="text-black text-base leading-relaxed">
+          <span class="font-semibold">Descrição:</span> <span class="font-normal">{{ post.description }}</span>
         </p>
       </div>
 
