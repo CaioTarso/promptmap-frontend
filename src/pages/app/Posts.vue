@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { Bookmark, ChevronLeft, ChevronRight } from 'lucide-vue-next';
 import PromptCopyBox from '../../components/posts/PromptCopyBox.vue';
 import PostsRecommend from '../../components/posts/PostsRecommend.vue';
+import CommentSection from '../../components/comments/CommentSection.vue';
 import HeaderGlobal from '../../components/layout/HeaderGlobal.vue';
 
 // Dados mockados
@@ -24,11 +25,11 @@ const post = ref({
       <div class="flex items-start justify-between mb-8">
         <div class="flex flex-col gap-3">
 
-          <h1 class="text-1xl text-black tracking-tight">{{ post.title }}</h1>
+          <h1 class="text-1xl font-bold text-black text-3xl tracking-tight">{{ post.title }}</h1>
           
           <div class="flex items-center gap-2">
             <div class="w-6 h-6 rounded-full bg-gray-200"></div>
-            <span class="text-xs  text-black">
+            <span class="text-xs text-gray-500">
               {{ post.author }} - {{ post.date }}
             </span>
           </div>
@@ -53,7 +54,7 @@ const post = ref({
         </div>
 
         <div class="flex flex-col h-full">
-          <h2 class="text-base text-black mb-3">Prompt :</h2>
+          <h2 class="text-base font-medium text-black mb-3">Prompt :</h2>
           
           <div class="flex-1 min-h-0 relative">
             <PromptCopyBox :promptContent="post.promptText" class="absolute inset-0" />
@@ -63,13 +64,14 @@ const post = ref({
 
       <div class="mt-8 mb-16">
         <p class="text-black text-sm leading-relaxed">
-          Descrição: <span class="font-normal">{{ post.description }}</span>
+          <span class="font-medium">Descrição:</span> <span class="font-normal">{{ post.description }}</span>
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         
         <div class="flex flex-col">
+          <CommentSection />
         </div>
 
         <div class="flex flex-col">
