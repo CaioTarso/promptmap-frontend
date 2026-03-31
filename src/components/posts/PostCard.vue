@@ -47,7 +47,7 @@ const emit = defineEmits(['click', 'toggleBookmark']);
 
     <div class="flex flex-col flex-1">
       <div class="mb-3">
-        <h3 class="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
+        <h3 class="font-semibold text-gray-900 text-1xl leading-snug line-clamp-2">
           {{ title }}
         </h3>
       </div>
@@ -66,7 +66,7 @@ const emit = defineEmits(['click', 'toggleBookmark']);
             </span>
           </div>
           
-          <span class="text-[11px] text-gray-500 font-semibold truncate leading-none">
+          <span class="text-[12px] text-gray-500 font-semibold truncate leading-none">
             {{ authorName }} - {{ date }}
           </span>
         </div>
