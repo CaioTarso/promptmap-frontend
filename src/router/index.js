@@ -3,6 +3,7 @@ import LandindPage from '../pages/LandindPage.vue';
 import Home from '../pages/app/Home.vue';
 import PostViewer from '../pages/app/Posts.vue';
 import CreatePost from '../pages/app/CreatePost.vue';
+import Profile from '../pages/app/Profile.vue';
 
 const routes = [
     {
@@ -31,6 +32,11 @@ const routes = [
         name: 'EditPost',
         component: CreatePost,
         props: true
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile
     }
 ];
 

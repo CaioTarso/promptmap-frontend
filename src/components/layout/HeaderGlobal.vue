@@ -45,7 +45,7 @@ const navItems = [
 
         <div class="h-6 w-[1px] bg-gray-200"></div>
 
-        <div class="w-10 h-10 bg-[#e5e7eb] rounded-full border border-gray-100 shadow-sm"></div>
+        <router-link to="/profile" class="w-10 h-10 bg-[#e5e7eb] rounded-full border border-gray-100 shadow-sm block hover:opacity-80 transition-opacity"></router-link>
       </div>
     </div>
 
