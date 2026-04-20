@@ -4,6 +4,8 @@ import Home from '../pages/app/Home.vue';
 import PostViewer from '../pages/app/Posts.vue';
 import CreatePost from '../pages/app/CreatePost.vue';
 import Profile from '../pages/app/Profile.vue';
+import ProfileConfig from '../pages/app/ProfileConfig.vue';
+import AccountConfig from '../pages/app/AccountConfig.vue';
 
 const routes = [
     {
@@ -37,6 +39,16 @@ const routes = [
         path: '/profile',
         name: 'Profile',
         component: Profile
+    },
+    {
+        path: '/profile/edit',
+        name: 'ProfileEdit',
+        component: ProfileConfig
+    },
+    {
+        path: '/account/edit',
+        name: 'AccountEdit',
+        component: AccountConfig
     }
 ];
 
