@@ -28,7 +28,7 @@
         <form @submit.prevent="handleLogin" class="space-y-6">
 
          <div>
-            <label class="text-xs font-medium block">Nome Completo</label>
+            <label class="text-sm font-medium block">Nome Completo</label>
             <input
                 v-model="name"
                 type="text"
@@ -41,7 +41,7 @@
 
 
           <div>
-            <label class="text-xs font-medium block">Email</label>
+            <label class="text-sm font-medium block">Email</label>
             <input
               v-model="email"
               type="email"
@@ -53,7 +53,7 @@
           </div>
 
           <div>
-            <label class="text-xs font-medium block">Senha</label>
+            <label class="text-sm font-medium block">Senha</label>
             <input
               v-model="password"
               type="password"
@@ -73,7 +73,7 @@
             
           </button>
 
-          <div class="text-xs text-center pt-2">
+          <div class="text-base text-center pt-2">
             Já possui uma conta? 
             <a href="#" @click.prevent="$emit('open-login')" class="font-bold hover:underline text-black">
               Entre agora.

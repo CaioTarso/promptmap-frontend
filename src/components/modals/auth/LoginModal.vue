@@ -27,7 +27,7 @@
 
         <form @submit.prevent="handleLogin" class="space-y-6">
           <div>
-            <label class="text-xs font-medium block">Email</label>
+            <label class="text-sm font-medium block">Email</label>
             <input
               v-model="email"
               type="email"
@@ -39,7 +39,7 @@
           </div>
 
           <div>
-            <label class="text-xs font-medium block">Senha</label>
+            <label class="text-sm font-medium block">Senha</label>
             <input
               v-model="password"
               type="password"
@@ -50,7 +50,7 @@
             />
           </div>
 
-          <a href="#" class="text-xs text-right block text-gray-700 hover:text-gray-900 hover:underline pt-1">
+          <a href="#" class="text-sm text-right block text-gray-700 hover:text-gray-900 hover:underline pt-1">
             Esqueceu sua senha?
           </a>
           
@@ -61,7 +61,7 @@
 
     
 
-          <div class="text-xs text-center pt-2">
+          <div class="text-base text-center pt-2">
             Ainda não possui uma conta? 
             <a href="#" @click.prevent="$emit('open-register')" class="font-bold hover:underline text-black">
               Cadastre-se agora.
