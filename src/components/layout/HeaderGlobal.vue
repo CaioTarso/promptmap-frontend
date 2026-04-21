@@ -33,7 +33,7 @@ const navItems = [
       <div class="flex items-center gap-8 flex-1">
         <router-link to="/home" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
         <img :src="logo" class="w-8 h-8" />
-        <span class="font-bold text-xl tracking-tight text-black">PromptMAP</span>
+        <span class="font-semibold text-xl tracking-tight text-black">PromptMAP</span>
       </router-link>
 
         <div class="flex-1 max-w-2xl flex items-center bg-[#f3f4f6] px-4 py-2.5 rounded-xl">
