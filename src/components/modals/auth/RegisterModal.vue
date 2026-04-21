@@ -1,7 +1,7 @@
 <template>
   <div class="fixed inset-0  bg-black/40 z-50" @click.self="$emit('close')">
     
-    <div class="absolute top-0 right-0 mt-40  pr-78">
+    <div class="flex items-center justify-center h-screen">
     
       <div class="relative w-full w-md bg-[#D9D9D9] text-gray-900 rounded-2xl shadow-2xl p-8">
         <div>

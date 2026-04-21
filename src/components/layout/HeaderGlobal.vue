@@ -1,10 +1,19 @@
 <script setup>
 import { ref } from 'vue'
-import { Search, Bookmark, TrendingUp } from 'lucide-vue-next'
+import { Search, Bookmark, TrendingUp,ChevronDown, ChevronUp } from 'lucide-vue-next'
 import logo from "../../assets/logo.png"
+import ConfigModal from "../modals/config/ConfigModal.vue"
 
 const searchQuery = ref('')
 const activeNav = ref('bombando')
+const showConfig = ref(false)
+
+const user = ref({
+  name: 'Caio teste',
+  email: 'caio@teste.com',
+  bio: 'Just having fun',
+  avatar: ''
+});
 
 const navItems = [
   { id: 'bombando', label: 'Bombando', icon: TrendingUp },
@@ -45,7 +54,22 @@ const navItems = [
 
         <div class="h-6 w-[1px] bg-gray-200"></div>
 
-        <router-link to="/profile" class="w-10 h-10 bg-[#e5e7eb] rounded-full border border-gray-100 shadow-sm block hover:opacity-80 transition-opacity"></router-link>
+        <div class="w-10 h-10 rounded-full bg-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
+            <img 
+              v-if="user.avatar" 
+              :src="user.avatar" 
+              alt="Avatar" 
+              class="w-full h-full object-cover"
+            />
+            <span v-else class="text-sm font-medium text-gray-500">
+              {{ user.name.charAt(0).toUpperCase() }}
+            </span>
+        </div>
+        <div class="relative">
+          <ChevronUp v-if="showConfig" class="w-7 h-7 cursor-pointer" @click="showConfig = false" />
+          <ChevronDown v-else class="w-7 h-7 cursor-pointer" @click="showConfig = true" />
+          <ConfigModal v-if="showConfig" v-model="showConfig" />
+        </div>
       </div>
     </div>
 
