@@ -27,7 +27,7 @@ function close() {
     <div v-if="modelValue" class="absolute right-0 mt-10 w-63 h-42 bg-white shadow-[0px_3px_19px_-6px_rgba(0,_0,_0,_0.4)] rounded-xl">
     <div class="p-4 flex justify-between">
        
-      <span class="font-semibold">{{ user.name }}</span>
+      <span class="font-normal">{{ user.name }}</span>
       <router-link to="/profile">
         <Settings class="w-5 h-5" />
       </router-link>
@@ -35,10 +35,10 @@ function close() {
     
     <div class="h-px bg-gray-200 mx-2"></div>
 
-    <button class="flex items-center w-full text-left px-4 py-2 font-semibold">
+    <button class="flex items-center w-full text-left px-4 py-2 font-bold">
         <MoonStar class="w-5 h-5 mr-3" /> DarkMode
     </button>
-    <router-link to="/" class="flex items-center w-full text-left px-4 py-2 font-semibold">
+    <router-link to="/" class="flex items-center w-full text-left px-4 py-2 font-bold">
         <LogOut class="w-5 h-5 mr-3" /> Sair
     </router-link>
   </div>
