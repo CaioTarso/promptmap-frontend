@@ -63,14 +63,7 @@ const saveProfile = () => {
             />
           </div>
 
-          <div class="flex flex-col gap-1.5">
-            <label class="text-sm font-medium text-gray-700">Bio</label>
-            <textarea
-              v-model="user.bio"
-              rows="3"
-              class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-black outline-none focus:border-black transition-colors resize-none"
-            ></textarea>
-          </div>
+      
 
           <div>
             <button

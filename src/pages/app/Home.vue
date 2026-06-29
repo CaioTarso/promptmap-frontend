@@ -98,7 +98,7 @@ const toggleBookmark = (post) => {
     
     <main class="max-w-6xl mx-auto px-6 py-8">
       
-      <div class="flex items-center gap-4 mb-10">
+      <!-- <div class="flex items-center gap-4 mb-10">
         <div class="flex items-center bg-[#efefef] px-3 py-1.5 rounded-lg w-48">
           <Search class="w-4 h-4 text-gray-400 mr-2" />
           <input 
@@ -112,7 +112,7 @@ const toggleBookmark = (post) => {
         <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
           <Bookmark class="w-5 h-5 text-black" />
         </button>
-      </div>
+      </div> -->
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
         <PostCard 

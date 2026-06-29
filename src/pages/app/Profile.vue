@@ -9,7 +9,6 @@ const router = useRouter();
 const user = ref({
   name: 'CaioTarso',
   email: 'caio@teste.com',
-  bio: 'Just having fun',
   avatar: ''
 });
 
@@ -89,7 +88,6 @@ const toggleBookmark = (post) => {
 
         <div class="pt-2 flex flex-col gap-1">
           <span class="text-sm text-gray-500">{{ user.email }}</span>
-          <span class="text-sm text-gray-500">{{ user.bio }}</span>
         </div>
       </div>
 
