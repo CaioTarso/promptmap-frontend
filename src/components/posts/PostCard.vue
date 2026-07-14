@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import { Bookmark } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -29,6 +30,19 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['click', 'toggleBookmark']);
+
+const formattedDate = computed(() => {
+  if (!props.date) return '';
+  const d = new Date(props.date);
+  if (isNaN(d.getTime())) return props.date;
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(d);
+});
 </script>
 
 <template>
@@ -67,7 +81,7 @@ const emit = defineEmits(['click', 'toggleBookmark']);
           </div>
           
           <span class="text-[12px] text-gray-500 font-semibold truncate leading-none">
-            {{ authorName }} - {{ date }}
+            {{ authorName }} · {{ formattedDate }}
           </span>
         </div>
 
