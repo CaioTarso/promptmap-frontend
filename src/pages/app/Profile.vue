@@ -5,6 +5,7 @@ import HeaderGlobal from '../../components/layout/HeaderGlobal.vue';
 import PostCard from '../../components/posts/PostCard.vue';
 import { useAuthStore } from '../../stores/useAuthStore';
 import userService from '../../services/userService';
+import { resolveImageUrl } from '../../lib/imageUrl';
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -12,6 +13,7 @@ const authStore = useAuthStore();
 const myPosts = ref([]);
 const loadingPosts = ref(false);
 const errorPosts = ref(null);
+
 
 onMounted(async () => {
   await authStore.fetchMe();
@@ -29,6 +31,10 @@ onMounted(async () => {
 
 const handlePostClick = (id) => {
   router.push(`/post/${id}`);
+};
+
+const handleEditClick = (id) => {
+  router.push(`/post/${id}/edit`);
 };
 
 const toggleBookmark = (post) => {
@@ -62,7 +68,7 @@ const toggleBookmark = (post) => {
             to="/profile/edit"
             class="bg-black text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors"
           >
-            Editar
+            Editar perfil
           </router-link>
         </div>
 
@@ -93,9 +99,11 @@ const toggleBookmark = (post) => {
           :title="post.title"
           :authorName="post.user?.name || authStore.currentUser?.name"
           :date="post.created_at"
-          :thumbnailUrl="post.thumbnailUrl || post.thumbnail_url || ''"
+          :thumbnailUrl="resolveImageUrl(post.thumbnail_url || post.thumbnailUrl) || ''"
           :isBookmarked="post.isBookmarked || false"
+          :showEditButton="true"
           @click="handlePostClick(post.id)"
+          @edit="handleEditClick(post.id)"
           @toggleBookmark="toggleBookmark(post)"
           class="max-w-none"
         />
