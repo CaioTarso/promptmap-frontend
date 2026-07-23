@@ -62,12 +62,19 @@ const formattedDate = (dateStr) => {
   }).format(d);
 };
 
+const isFavorited = ref(false);
+const favoriting = ref(false);
+
 onMounted(async () => {
   await authStore.fetchMe();
   try {
     const data = await promptService.getById(route.params.id);
     post.value = data.data || data;
     currentImageIndex.value = 0;
+    isFavorited.value =
+      post.value.favorited_by_current_user ??
+      post.value.is_favorited ??
+      false;
   } catch (err) {
     error.value = 'Não foi possível carregar o prompt. Verifique se ele existe.';
   } finally {
@@ -77,6 +84,24 @@ onMounted(async () => {
 
 const goToEdit = () => {
   router.push(`/post/${route.params.id}/edit`);
+};
+
+const toggleFavorite = async () => {
+  if (favoriting.value) return;
+  favoriting.value = true;
+  const was = isFavorited.value;
+  isFavorited.value = !was;
+  try {
+    if (was) {
+      await promptService.unfavorite(route.params.id);
+    } else {
+      await promptService.favorite(route.params.id);
+    }
+  } catch {
+    isFavorited.value = was; // reverte
+  } finally {
+    favoriting.value = false;
+  }
 };
 
 const showDeleteModal = ref(false);
@@ -158,8 +183,14 @@ const confirmDelete = async () => {
             Excluir
           </button>
 
-          <button class="text-black hover:text-gray-600 transition-colors">
-            <Bookmark class="w-6 h-6" fill="none" />
+          <button
+            @click="toggleFavorite"
+            :disabled="favoriting"
+            class="transition-colors disabled:opacity-50"
+            :class="isFavorited ? 'text-black' : 'text-gray-400 hover:text-black'"
+            aria-label="Favoritar prompt"
+          >
+            <Bookmark class="w-6 h-6" :fill="isFavorited ? 'currentColor' : 'none'" />
           </button>
         </div>
       </div>
@@ -239,7 +270,10 @@ const confirmDelete = async () => {
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         <div class="flex flex-col">
-          <CommentSection />
+          <CommentSection
+            :promptId="route.params.id"
+            :currentUserId="authStore.currentUser?.id"
+          />
         </div>
         <div class="flex flex-col">
           <PostsRecommend />

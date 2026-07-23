@@ -56,6 +56,16 @@ const promptService = {
     const response = await api.delete(`/prompts/${id}`);
     return response.data;
   },
+
+  async favorite(id) {
+    const response = await api.post(`/prompts/${id}/favorite`);
+    return response.data;
+  },
+
+  async unfavorite(id) {
+    const response = await api.delete(`/prompts/${id}/favorite`);
+    return response.data;
+  },
 };
 
 export default promptService;

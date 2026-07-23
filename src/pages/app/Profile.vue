@@ -5,6 +5,7 @@ import HeaderGlobal from '../../components/layout/HeaderGlobal.vue';
 import PostCard from '../../components/posts/PostCard.vue';
 import { useAuthStore } from '../../stores/useAuthStore';
 import userService from '../../services/userService';
+import promptService from '../../services/promptService';
 import { resolveImageUrl } from '../../lib/imageUrl';
 
 const router = useRouter();
@@ -21,7 +22,10 @@ onMounted(async () => {
   loadingPosts.value = true;
   try {
     const data = await userService.myPrompts();
-    myPosts.value = data.data || data.prompts || data || [];
+    myPosts.value = (data.data || data.prompts || data || []).map(p => ({
+      ...p,
+      isBookmarked: p.favorited_by_current_user ?? p.is_favorited ?? false,
+    }));
   } catch (err) {
     errorPosts.value = 'Não foi possível carregar seus prompts.';
   } finally {
@@ -37,8 +41,18 @@ const handleEditClick = (id) => {
   router.push(`/post/${id}/edit`);
 };
 
-const toggleBookmark = (post) => {
-  post.isBookmarked = !post.isBookmarked;
+const toggleBookmark = async (post) => {
+  const was = post.isBookmarked;
+  post.isBookmarked = !was;
+  try {
+    if (was) {
+      await promptService.unfavorite(post.id);
+    } else {
+      await promptService.favorite(post.id);
+    }
+  } catch {
+    post.isBookmarked = was;
+  }
 };
 </script>
 
@@ -100,7 +114,7 @@ const toggleBookmark = (post) => {
           :authorName="post.user?.name || authStore.currentUser?.name"
           :date="post.created_at"
           :thumbnailUrl="resolveImageUrl(post.thumbnail_url || post.thumbnailUrl) || ''"
-          :isBookmarked="post.isBookmarked || false"
+          :isBookmarked="post.isBookmarked"
           :showEditButton="true"
           @click="handlePostClick(post.id)"
           @edit="handleEditClick(post.id)"
