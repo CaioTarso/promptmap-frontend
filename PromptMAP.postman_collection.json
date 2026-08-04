@@ -1,0 +1,1070 @@
+{
+  "info": {
+    "_postman_id": "8ae01c48-06bd-456b-814f-0b64fed70235",
+    "name": "PromptMAP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38440845"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "signup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"user\": {\n      \"name\": \"caio teste\",\n      \"email\": \"caio@teste.com\",\n      \"password\": \"password\",\n      \"password_confirmation\": \"password\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"user\": {\n      \"email\": \"caio@teste.com\",\n      \"password\": \"password\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4MDI3MjY2LCJleHAiOjE3NzgxMTM2NjYsImp0aSI6IjNmODhkOTNiLWY0MzctNDAyYy1iYzFjLWVkMDVkZTVmZjRiOSJ9.FquX2hSRWMb-tyKzinslwIrI7RkC4dT2pUx6OyeHdwc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "me",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4MTgxOTAxLCJleHAiOjE3NzgyNjgzMDEsImp0aSI6IjYzY2MyYTIzLThjZTgtNDgzMy1hNGVkLWNlMTgwN2I0MGUzZSJ9.j6hcd16_4n1DC4JLTdfRUZR1yeOsGVN8vF8ruqfy9ls",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4MTc3NDY0LCJleHAiOjE3NzgyNjM4NjQsImp0aSI6IjRhMmFhZTVjLTFiMjYtNDFlNy1iN2IxLWU3OWE3ZTYxZDNhOCJ9.Bn8_tsPNwdwwx2LDpgnQ0GMpCpazQ_sC5xq9-6XMZnU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"name\": \"caizon teste\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User prompts",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4NjA5MzE3LCJleHAiOjE3Nzg2OTU3MTcsImp0aSI6IjYwN2UxODFkLTE5ZTUtNGFiYy04NmQ0LWQ4MGRlNTYzYzBmOSJ9.JOPKZLFYFd1bGggmRNKDbTGRuqB32BsZ5JvuxV84nU8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/me/prompts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "prompts"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Prompts",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwODQ4MDU2LCJleHAiOjE3ODA5MzQ0NTYsImp0aSI6ImQzOTYzODJkLTQ1MGYtNDczMy1iZDc4LWRhMTAwNjg0ZjgxYiJ9.I7tNp6mJ2PxH1mrY5boWMmtrEC0D15IKsbHcYiMDeqo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": {\n    \"title\": \"Prompt para fazer backend no supbase \",\n    \"description\": \"Resume textos longos em tópicos claros.\",\n    \"content\": \"Resuma o texto abaixo em até 5 tópicos objetivos, mantendo os pontos principais.\",\n    \"prompt_type\": \"code\",\n    \"tag_names\": [\"backend\", \"supabase\"]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwODQ4MDU2LCJleHAiOjE3ODA5MzQ0NTYsImp0aSI6ImQzOTYzODJkLTQ1MGYtNDczMy1iZDc4LWRhMTAwNjg0ZjgxYiJ9.I7tNp6mJ2PxH1mrY5boWMmtrEC0D15IKsbHcYiMDeqo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts?sort=popular&prompt_type=code&tag=backend",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "popular",
+                  "description": "Ordenação dos resultados"
+                },
+                {
+                  "key": "search",
+                  "value": null,
+                  "description": "Busca por título, descrição ou conteúdo do prompt",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "prompt_type",
+                  "value": "code",
+                  "description": "Filtra por tipo de prompt: document, image, code, video",
+                  "type": "text"
+                },
+                {
+                  "key": "tag",
+                  "value": "backend",
+                  "description": "Filtra prompts por tag",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4MTc3NDY0LCJleHAiOjE3NzgyNjM4NjQsImp0aSI6IjRhMmFhZTVjLTFiMjYtNDFlNy1iN2IxLWU3OWE3ZTYxZDNhOCJ9.Bn8_tsPNwdwwx2LDpgnQ0GMpCpazQ_sC5xq9-6XMZnU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": {\n    \"description\": \"testando editar prompt\",\n    \"tag_names\": [\"imagem\"]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4MTc3NDY0LCJleHAiOjE3NzgyNjM4NjQsImp0aSI6IjRhMmFhZTVjLTFiMjYtNDFlNy1iN2IxLWU3OWE3ZTYxZDNhOCJ9.Bn8_tsPNwdwwx2LDpgnQ0GMpCpazQ_sC5xq9-6XMZnU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": {\n    \"description\": \"testando editar 2\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Replies",
+          "item": [
+            {
+              "name": "Create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"comment\": {\n        \"content\": \"testando resposta again\",\n        \"parent_id\": 6\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/prompts/:prompt_id/comments",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "prompts",
+                    ":prompt_id",
+                    "comments"
+                  ],
+                  "variable": [
+                    {
+                      "key": "prompt_id",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"comment\":{\n       \"content\": \"prompt ruim do carai\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id",
+                "comments"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Editando comentário",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4NjA5MzE3LCJleHAiOjE3Nzg2OTU3MTcsImp0aSI6IjYwN2UxODFkLTE5ZTUtNGFiYy04NmQ0LWQ4MGRlNTYzYzBmOSJ9.JOPKZLFYFd1bGggmRNKDbTGRuqB32BsZ5JvuxV84nU8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"comment\":{\n       \"content\": \"testando os comentários editado\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/:comment_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                ":comment_id"
+              ],
+              "variable": [
+                {
+                  "key": "comment_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET by id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4NjA5MzE3LCJleHAiOjE3Nzg2OTU3MTcsImp0aSI6IjYwN2UxODFkLTE5ZTUtNGFiYy04NmQ0LWQ4MGRlNTYzYzBmOSJ9.JOPKZLFYFd1bGggmRNKDbTGRuqB32BsZ5JvuxV84nU8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/:comment_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                ":comment_id"
+              ],
+              "variable": [
+                {
+                  "key": "comment_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4NjA5MzE3LCJleHAiOjE3Nzg2OTU3MTcsImp0aSI6IjYwN2UxODFkLTE5ZTUtNGFiYy04NmQ0LWQ4MGRlNTYzYzBmOSJ9.JOPKZLFYFd1bGggmRNKDbTGRuqB32BsZ5JvuxV84nU8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/:comment_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                ":comment_id"
+              ],
+              "variable": [
+                {
+                  "key": "comment_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET comments",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id",
+                "comments"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments like",
+      "item": [
+        {
+          "name": "Curtir",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/:comment_id/like",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                ":comment_id",
+                "like"
+              ],
+              "variable": [
+                {
+                  "key": "comment_id",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retirar curtida",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzc4NzAyNjAzLCJleHAiOjE3Nzg3ODkwMDMsImp0aSI6IjBhMzcyODBjLWRhMjEtNDM3OS05MzE0LTBlZTg2Zjg1NGQ0MSJ9.gZ3je-GcxIdcB8oNxuOWkkpQ8T-6wYSMFgwNsR3TS5U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/:comment_id/like",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                ":comment_id",
+                "like"
+              ],
+              "variable": [
+                {
+                  "key": "comment_id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Favorite Prompt",
+      "item": [
+        {
+          "name": "Meus favoritos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/me/favorites",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "favorites"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Favoritar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id/favorite",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id",
+                "favorite"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Desfavoritar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/prompts/:prompt_id/favorite",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                ":prompt_id",
+                "favorite"
+              ],
+              "variable": [
+                {
+                  "key": "prompt_id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "tags",
+      "item": [
+        {
+          "name": "ver tags",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/tags",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "tags"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ver tag específica",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNzgwNjg0NDMyLCJleHAiOjE3ODA3NzA4MzIsImp0aSI6IjZkZmVhODUyLWJlYjQtNGY1ZC04YTNiLTg5ZTYxYWY4ZDYzMyJ9.ZJ6NsjS8H0x09h1mVNsXgp6aXbBQfzCnoUcD5-Jir1U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/tags/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "tags",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

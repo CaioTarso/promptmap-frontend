@@ -11,44 +11,52 @@ const routes = [
     {
         path: '/',
         name: 'Landing',
-        component: LandindPage
+        component: LandindPage,
+        meta: { requiresGuest: true }
     },
     {
         path: '/home',
         name: 'Home',
-        component: Home
+        component: Home,
+        meta: { requiresAuth: true }
     },
     {
         path: '/post/:id',
         name: 'PostViewer',
         component: PostViewer,
-        props: true
+        props: true,
+        meta: { requiresAuth: true }
     },
     {
         path: '/create',
         name: 'CreatePost',
-        component: CreatePost
+        component: CreatePost,
+        meta: { requiresAuth: true }
     },
     {
         path: '/post/:id/edit',
         name: 'EditPost',
         component: CreatePost,
-        props: true
+        props: true,
+        meta: { requiresAuth: true }
     },
     {
         path: '/profile',
         name: 'Profile',
-        component: Profile
+        component: Profile,
+        meta: { requiresAuth: true }
     },
     {
         path: '/profile/edit',
         name: 'ProfileEdit',
-        component: ProfileConfig
+        component: ProfileConfig,
+        meta: { requiresAuth: true }
     },
     {
         path: '/account/edit',
         name: 'AccountEdit',
-        component: AccountConfig
+        component: AccountConfig,
+        meta: { requiresAuth: true }
     }
 ];
 
@@ -57,6 +65,19 @@ const router = createRouter({
     routes,
     scrollBehavior() {
         return { top: 0 };
+    }
+});
+
+// Navigation guard – uses localStorage directly to avoid circular import with the store
+router.beforeEach((to) => {
+    const token = localStorage.getItem('auth_token');
+
+    if (to.meta.requiresAuth && !token) {
+        return { name: 'Landing' };
+    }
+
+    if (to.meta.requiresGuest && token) {
+        return { name: 'Home' };
     }
 });
 

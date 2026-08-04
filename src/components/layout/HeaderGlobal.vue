@@ -1,70 +1,89 @@
 <script setup>
-import { ref } from 'vue'
-import { Search, Bookmark, TrendingUp,ChevronDown, ChevronUp } from 'lucide-vue-next'
-import logo from "../../assets/logo.png"
-import ConfigModal from "../modals/config/ConfigModal.vue"
+import { ref, watch } from 'vue'
+import { Search, Bookmark, TrendingUp, ChevronDown, ChevronUp } from 'lucide-vue-next'
+import logo from '../../assets/logo.png'
+import ConfigModal from '../modals/config/ConfigModal.vue'
+import { useAuthStore } from '../../stores/useAuthStore'
+import { useFilterStore } from '../../stores/useFilterStore'
 
-const searchQuery = ref('')
-const activeNav = ref('bombando')
+const authStore = useAuthStore()
+const filterStore = useFilterStore()
+
 const showConfig = ref(false)
+const localSearch = ref(filterStore.search)
 
-const user = ref({
-  name: 'Caio teste',
-  email: 'caio@teste.com',
-  bio: 'Just having fun',
-  avatar: ''
-});
+let debounceTimer = null
+watch(localSearch, (val) => {
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => filterStore.setSearch(val), 400)
+})
 
 const navItems = [
-  { id: 'bombando', label: 'Bombando', icon: TrendingUp },
-  { id: 'favoritos', label: 'Favoritos', icon: Bookmark },
-  { id: 'imagens', label: 'Imagens' },
-  { id: 'videos', label: 'Vídeos' },
-  { id: 'desenvolvimento', label: 'Desenvolvimento' },
-  { id: 'documentos', label: 'Documentos' },
+  { id: 'bombando',        label: 'Bombando',       icon: TrendingUp, sort: 'popular', promptType: '',         favoritesOnly: false },
+  { id: 'favoritos',       label: 'Favoritos',      icon: Bookmark,   sort: 'popular', promptType: '',         favoritesOnly: true  },
+  { id: 'imagens',         label: 'Imagens',        icon: null,       sort: 'popular', promptType: 'image',    favoritesOnly: false },
+  { id: 'videos',          label: 'Vídeos',         icon: null,       sort: 'popular', promptType: 'video',    favoritesOnly: false },
+  { id: 'desenvolvimento', label: 'Desenvolvimento',icon: null,       sort: 'popular', promptType: 'code',     favoritesOnly: false },
+  { id: 'documentos',      label: 'Documentos',     icon: null,       sort: 'popular', promptType: 'document', favoritesOnly: false },
 ]
+
+const activeNav = ref('bombando')
+
+function selectNav(item) {
+  activeNav.value = item.id
+  filterStore.applyNav(item)
+}
 </script>
 
 <template>
   <header class="bg-white border-b border-gray-200 select-none sticky top-0 z-50 pt-2">
 
     <div class="max-w-6xl mx-auto flex items-center justify-between gap-10 px-6 py-4">
-      
+
       <div class="flex items-center gap-8 flex-1">
         <router-link to="/home" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <img :src="logo" class="w-8 h-8" />
-        <span class="font-semibold text-xl tracking-tight text-black">PromptMAP</span>
-      </router-link>
+          <img :src="logo" class="w-8 h-9" />
+          <span class="font-bold text-xl tracking-tight text-black">PromptMAP</span>
+        </router-link>
 
         <div class="flex-1 max-w-2xl flex items-center bg-[#f3f4f6] px-4 py-2.5 rounded-xl">
-          <Search class="w-4 h-4 text-gray-400 mr-2" />
+          <Search class="w-4 h-4 text-gray-400 mr-2 shrink-0" />
           <input
-            v-model="searchQuery"
+            v-model="localSearch"
             type="text"
             placeholder="Busque prompts"
             class="bg-transparent outline-none w-full text-sm text-gray-600 font-normal placeholder:text-gray-400"
           />
+          <button
+            v-if="localSearch"
+            @click="localSearch = ''"
+            class="ml-2 text-gray-400 hover:text-gray-600 transition-colors text-lg leading-none"
+            aria-label="Limpar busca"
+          >
+            ×
+          </button>
         </div>
       </div>
 
       <div class="flex items-center gap-6">
-        <router-link to="/create" class="bg-black text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-gray-800 transition-colors">
+        <router-link to="/create" class="bg-black text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-gray-800 transition-colors">
           Publicar
         </router-link>
 
         <div class="h-6 w-[1px] bg-gray-200"></div>
 
-        <div class="w-10 h-10 rounded-full bg-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
-            <img 
-              v-if="user.avatar" 
-              :src="user.avatar" 
-              alt="Avatar" 
-              class="w-full h-full object-cover"
-            />
-            <span v-else class="text-sm font-medium text-gray-500">
-              {{ user.name.charAt(0).toUpperCase() }}
-            </span>
-        </div>
+        <router-link to="/profile" class="w-10 h-10 rounded-full bg-gray-200 shrink-0 flex items-center justify-center overflow-hidden hover:ring-2 hover:ring-gray-400 transition-all">
+          <img
+            v-if="authStore.currentUser?.avatar"
+            :src="authStore.currentUser.avatar"
+            alt="Avatar"
+            class="w-full h-full object-cover"
+          />
+          <span v-else class="text-sm font-medium text-gray-500">
+            {{ authStore.currentUser?.name?.charAt(0)?.toUpperCase() || '?' }}
+          </span>
+        </router-link>
+
         <div class="relative">
           <ChevronUp v-if="showConfig" class="w-7 h-7 cursor-pointer" @click="showConfig = false" />
           <ChevronDown v-else class="w-7 h-7 cursor-pointer" @click="showConfig = true" />
@@ -78,23 +97,21 @@ const navItems = [
         <button
           v-for="(item, index) in navItems"
           :key="item.id"
-          @click="activeNav = item.id"
+          @click="selectNav(item)"
           class="flex items-center gap-2 py-3 text-sm relative transition-colors"
-          :class="activeNav === item.id 
-            ? 'text-black font-semibold' 
+          :class="activeNav === item.id
+            ? 'text-black font-semibold'
             : 'text-gray-600 font-semibold hover:text-black'"
         >
-          <component
-            v-if="item.icon"
-            :is="item.icon"
-            class="w-4 h-4"
+          <span
+            v-if="activeNav === item.id"
+            class="absolute bottom-0 left-0 w-full h-0.5 bg-black rounded-full"
           />
 
+          <component v-if="item.icon" :is="item.icon" class="w-4 h-4" />
           {{ item.label }}
 
-          <div v-if="index === 1" class="h-4 w-[1px] bg-gray-300 ml-6 absolute right-[-1.5rem] top-1/2 -translate-y-1/2 "></div>
-
-          
+          <div v-if="index === 1" class="h-4 w-[1px] bg-gray-300 ml-6 absolute right-[-1.5rem] top-1/2 -translate-y-1/2"></div>
         </button>
       </div>
     </nav>
