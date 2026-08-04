@@ -1,34 +1,52 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import HeaderGlobal from '../../components/layout/HeaderGlobal.vue';
 import PostCard from '../../components/posts/PostCard.vue';
 import promptService from '../../services/promptService';
+import userService from '../../services/userService';
 import { resolveImageUrl } from '../../lib/imageUrl';
+import { useFilterStore } from '../../stores/useFilterStore';
 
 const router = useRouter();
+const filterStore = useFilterStore();
 
 const posts = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-onMounted(async () => {
+async function fetchPosts() {
+  loading.value = true;
+  error.value = null;
   try {
-    const data = await promptService.getAll();
+    let data;
+    if (filterStore.favoritesOnly) {
+      data = await userService.myFavorites();
+    } else {
+      data = await promptService.getAll(filterStore.params);
+    }
     posts.value = (data.data || data.prompts || data || []).map(normalizePost);
   } catch {
     error.value = 'Não foi possível carregar os prompts.';
   } finally {
     loading.value = false;
   }
-});
+}
 
 const normalizePost = (p) => ({
   ...p,
   thumbnailUrl: resolveImageUrl(p.thumbnail_url || p.thumbnailUrl) || '',
   authorName: p.user?.name || p.author_name || '',
-  isBookmarked: p.favorited_by_current_user ?? p.is_favorited ?? false,
+  isBookmarked: filterStore.favoritesOnly
+    ? true
+    : (p.favorited_by_current_user ?? p.is_favorited ?? false),
 });
+
+watch(
+  () => [filterStore.params, filterStore.favoritesOnly],
+  () => fetchPosts(),
+  { immediate: true, deep: true }
+);
 
 const handlePostClick = (id) => {
   router.push(`/post/${id}`);
@@ -36,7 +54,7 @@ const handlePostClick = (id) => {
 
 const toggleBookmark = async (post) => {
   const was = post.isBookmarked;
-  post.isBookmarked = !was; // otimista
+  post.isBookmarked = !was;
   try {
     if (was) {
       await promptService.unfavorite(post.id);
@@ -44,7 +62,7 @@ const toggleBookmark = async (post) => {
       await promptService.favorite(post.id);
     }
   } catch {
-    post.isBookmarked = was; // reverte
+    post.isBookmarked = was;
   }
 };
 </script>
@@ -54,6 +72,11 @@ const toggleBookmark = async (post) => {
     <HeaderGlobal />
 
     <main class="max-w-6xl mx-auto px-6 py-8">
+
+      <div v-if="filterStore.search" class="mb-6 flex items-center gap-2 text-sm text-gray-500">
+        <span>Resultados para:</span>
+        <span class="font-semibold text-black">"{{ filterStore.search }}"</span>
+      </div>
 
       <div v-if="loading" class="flex justify-center items-center py-24">
         <svg class="animate-spin w-7 h-7 text-gray-300" fill="none" viewBox="0 0 24 24">

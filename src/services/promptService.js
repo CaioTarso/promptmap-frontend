@@ -7,6 +7,14 @@ const promptService = {
     return response.data;
   },
 
+  async getRecommended(promptId, { promptType, tags = [] } = {}) {
+    const params = { sort: 'popular', exclude_id: promptId };
+    if (promptType)      params.prompt_type = promptType;
+    if (tags.length > 0) params.tag = tags[0]?.name || tags[0]; // filtra pela primeira tag
+    const response = await api.get('/prompts', { params });
+    return response.data;
+  },
+
   async getById(id) {
     const response = await api.get(`/prompts/${id}`);
     return response.data;

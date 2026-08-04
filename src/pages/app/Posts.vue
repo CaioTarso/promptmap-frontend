@@ -276,7 +276,7 @@ const confirmDelete = async () => {
           />
         </div>
         <div class="flex flex-col">
-          <PostsRecommend />
+          <PostsRecommend :prompt="post" />
         </div>
       </div>
     </div>

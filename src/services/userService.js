@@ -12,6 +12,11 @@ const userService = {
     const response = await api.get('/me/prompts');
     return response.data;
   },
+
+  async myFavorites() {
+    const response = await api.get('/me/favorites');
+    return response.data;
+  },
 };
 
 export default userService;
