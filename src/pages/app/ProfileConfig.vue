@@ -38,7 +38,7 @@ const saveProfile = async () => {
   <div class="min-h-screen bg-white">
     <HeaderGlobal />
 
-    <div class="max-w-6xl mx-auto px-6 py-12 flex gap-12">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 flex flex-col md:flex-row gap-8 md:gap-12">
 
       <AsideProfile />
 

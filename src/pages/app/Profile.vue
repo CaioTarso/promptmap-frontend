@@ -60,9 +60,9 @@ const toggleBookmark = async (post) => {
   <div class="min-h-screen bg-white">
     <HeaderGlobal />
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <main class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
 
-      <div class="flex flex-col gap-3 mb-12">
+      <div class="flex flex-col gap-3 mb-10 md:mb-12">
         <div class="flex items-center gap-4">
           <div class="w-10 h-10 rounded-full bg-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
             <img
@@ -106,7 +106,7 @@ const toggleBookmark = async (post) => {
         Você ainda não publicou nenhum prompt.
       </p>
 
-      <div v-else class="grid grid-cols-2 gap-x-5 gap-y-6 max-w-4xl">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-6 max-w-4xl">
         <PostCard
           v-for="post in myPosts"
           :key="post.id"

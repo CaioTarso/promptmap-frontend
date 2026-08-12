@@ -188,7 +188,7 @@ const handlePublish = async () => {
       </svg>
     </div>
 
-    <main v-else class="max-w-2xl mx-auto px-6 py-12">
+    <main v-else class="max-w-2xl mx-auto px-4 md:px-6 py-8 md:py-12">
 
       <h1 class="text-xl font-bold text-black mb-10">{{ pageTitle }}</h1>
 

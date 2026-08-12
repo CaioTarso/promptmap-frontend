@@ -142,8 +142,8 @@ const confirmDelete = async () => {
       </button>
     </div>
 
-    <div v-else-if="post" class="max-w-6xl mx-auto py-12 px-6">
-      <div class="flex items-start justify-between mb-8">
+    <div v-else-if="post" class="max-w-6xl mx-auto py-8 md:py-12 px-4 md:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-8">
         <div class="flex flex-col gap-3">
           <h1 class="text-3xl font-bold text-black tracking-tight">{{ post.title }}</h1>
           <div class="flex items-center gap-2">

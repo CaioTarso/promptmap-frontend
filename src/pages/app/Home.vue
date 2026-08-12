@@ -71,7 +71,7 @@ const toggleBookmark = async (post) => {
   <div class="min-h-screen bg-white">
     <HeaderGlobal />
 
-    <main class="max-w-6xl mx-auto px-6 py-8">
+    <main class="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-8">
 
       <div v-if="filterStore.search" class="mb-6 flex items-center gap-2 text-sm text-gray-500">
         <span>Resultados para:</span>

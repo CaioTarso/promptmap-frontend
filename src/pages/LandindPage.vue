@@ -3,22 +3,25 @@ import { ref } from "vue";
 import { useRouter } from 'vue-router';
 import heroimage from "../assets/heroimage.png";
 import logobranca from "../assets/logobranca.png";
-import { User, Heart, Send, Linkedin, Github, Terminal } from "lucide-vue-next";
+import { User, Heart, Send, Linkedin, Github, Menu, X } from "lucide-vue-next";
 import LoginModal from "../components/modals/auth/LoginModal.vue";
 import RegisterModal from "../components/modals/auth/RegisterModal.vue";
 
 const router = useRouter();
 const showLogin = ref(false);
 const showRegister = ref(false);
+const mobileMenuOpen = ref(false);
 
 const openLogin = () => {
     showRegister.value = false;
     showLogin.value = true;
+    mobileMenuOpen.value = false;
 };
 
 const openRegister = () => {
     showLogin.value = false;
     showRegister.value = true;
+    mobileMenuOpen.value = false;
 };
 
 </script>
@@ -27,77 +30,104 @@ const openRegister = () => {
 
 
 <template>
-  <header class="bg-stone-900 p-6 top-0 w-full fixed z-10">
+  <header class="bg-stone-900 px-4 md:px-6 py-4 top-0 w-full fixed z-10">
     <div class="flex justify-between items-center max-w-7xl mx-auto">
       <div class="flex items-center gap-2 text-white font-bold text-1xl"> 
         <figure>
           <img 
             :src="logobranca" 
             alt="Logo PromptMAP" 
-            class="w-10 h-12"
+            class="w-8 h-10 md:w-10 md:h-12"
           />
         </figure>
-        <div class="font-bold text-1xl ">
+        <div class="font-bold text-1xl">
           PromptMAP
         </div>
       </div>
 
-      <nav class="flex items-center gap-8 ">
+      <nav class="hidden md:flex items-center gap-8">
         <a href="#Home" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Home</a>
         <a href="#Sobre" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Sobre</a>
-        <a href="#HowWorks" class="text-neutral-400  hover:text-neutral-500 font-medium text-1xl">Como Funciona</a>
+        <a href="#HowWorks" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Como Funciona</a>
         <a href="#Contato" class="text-neutral-400 hover:text-neutral-500 font-medium text-1xl">Contato</a>
       </nav>
 
-      <div class="flex items-center gap-4">
-        <button  @click="showLogin = true" class="bg-neutral-400 text-white px-6 py-2 rounded-lg hover:bg-neutral-500 font-medium text-1xl">Login</button>
-        <button  @click="showRegister= true"  class="bg-white text-neutral-400 px-6 py-2 rounded-lg hover:bg-gray-100 font-medium text-1xl">
+      <div class="hidden md:flex items-center gap-4">
+        <button @click="showLogin = true" class="bg-neutral-400 text-white px-6 py-2 rounded-lg hover:bg-neutral-500 font-medium text-1xl">Login</button>
+        <button @click="showRegister = true" class="bg-white text-neutral-400 px-6 py-2 rounded-lg hover:bg-gray-100 font-medium text-1xl">
           Register
         </button>
       </div>
+
+      <button 
+        class="md:hidden text-neutral-400 hover:text-white transition-colors p-1"
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        :aria-label="mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'"
+      >
+        <X v-if="mobileMenuOpen" class="w-6 h-6" />
+        <Menu v-else class="w-6 h-6" />
+      </button>
     </div>
+
+    <Transition name="slide-down">
+      <div
+        v-if="mobileMenuOpen"
+        class="md:hidden mt-4 pb-4 border-t border-stone-700 flex flex-col gap-1"
+      >
+        <nav class="flex flex-col gap-1 py-3">
+          <a @click="mobileMenuOpen = false" href="#Home" class="text-neutral-400 hover:text-white font-medium py-2.5 px-2 rounded-lg hover:bg-stone-800 transition-colors">Home</a>
+          <a @click="mobileMenuOpen = false" href="#Sobre" class="text-neutral-400 hover:text-white font-medium py-2.5 px-2 rounded-lg hover:bg-stone-800 transition-colors">Sobre</a>
+          <a @click="mobileMenuOpen = false" href="#HowWorks" class="text-neutral-400 hover:text-white font-medium py-2.5 px-2 rounded-lg hover:bg-stone-800 transition-colors">Como Funciona</a>
+          <a @click="mobileMenuOpen = false" href="#Contato" class="text-neutral-400 hover:text-white font-medium py-2.5 px-2 rounded-lg hover:bg-stone-800 transition-colors">Contato</a>
+        </nav>
+        <div class="flex flex-col gap-2 pt-2">
+          <button @click="openLogin" class="w-full bg-neutral-400 text-white px-6 py-2.5 rounded-lg hover:bg-neutral-500 font-medium">Login</button>
+          <button @click="openRegister" class="w-full bg-white text-neutral-400 px-6 py-2.5 rounded-lg hover:bg-gray-100 font-medium">Register</button>
+        </div>
+      </div>
+    </Transition>
   </header>
 
-    <section id="Home" class="bg-gradient-to-b from-neutral-900 to-neutral-400 min-h-screen flex justify-center items-start pt-49">
-      <div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center gap-12">
-          <div class="md:w-1/2">
-            <h2 class="text-3xl md:text-5xl font-bold text-1xl text-white mb-6 pb-6">
+    <section id="Home" class="bg-gradient-to-b from-neutral-900 to-neutral-400 min-h-screen flex justify-center items-start pt-28 md:pt-48 px-4 md:px-6">
+      <div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+          <div class="w-full md:w-1/2 text-center md:text-left">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 pb-2 md:pb-6">
               Explore ideias e <br/>compartilhe as suas!
             </h2>
-            <div>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <button 
                 @click="showLogin = true" 
-                class="bg-neutral-400 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300 font-medium text-1xl"
+                class="bg-neutral-400 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300 font-medium"
               >
                 Comece agora
               </button>
-              <button class="hover:scale-105 transition-transform duration-300">
-                <a href="#Sobre" class="ml-4 bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100 font-medium text-1xl">
-                  Saiba mais
-                </a>
-              </button>
+              <a href="#Sobre" class="bg-white text-neutral-400 px-6 py-3 rounded-lg hover:bg-gray-100 font-medium hover:scale-105 transition-transform duration-300 inline-block text-center">
+                Saiba mais
+              </a>
             </div>
           </div>
 
-          <div class="md:w-1/2">
+          <div class="w-full md:w-1/2">
               <img
                 :src="heroimage"
                 alt="Imagem de destaque"
+                class="w-full h-auto"
               />
           </div>
         </div>
     </section>
 
-  <section id="Sobre" class="bg-neutral-100 min-h-screen flex justify-center items-center px-6">
-    <div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center gap-12">
-      <div class="md:w-1/2">
+  <section id="Sobre" class="bg-neutral-100 min-h-screen flex justify-center items-center px-4 md:px-6 py-20 md:py-0">
+    <div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+      <div class="w-full md:w-1/2">
         <img
           :src="heroimage"
           alt="Imagem de destaque"
+          class="w-full h-auto"
         />
       </div>
 
-      <div class="md:w-1/2">
+      <div class="w-full md:w-1/2">
         <h2 class="text-3xl md:text-5xl font-bold text-neutral-800 mb-6">
           Sobre o PromptMAP
         </h2>
@@ -179,7 +209,7 @@ const openRegister = () => {
     </div>
 
   </div>
-  <div class="border-t border-neutral-800 mt-8 pt-6 flex justify-center items-centermd:text-right">
+  <div class="border-t border-neutral-800 mt-8 pt-6 flex justify-center items-center md:text-right">
     <p class="text-sm">&copy; 2024 PromptMAP. Todos os direitos reservados.</p>
   </div>
 </footer>
@@ -197,3 +227,14 @@ const openRegister = () => {
   />
 </template>
 
+<style scoped>
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.25s ease;
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+</style>
